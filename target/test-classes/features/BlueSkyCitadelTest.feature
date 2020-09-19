@@ -1,6 +1,7 @@
 Feature: BlueSky Form Test
   Scenario: Form Test
     Given I navigate to blueskycitadelform site
+    And I close the pop up
     When I click on Automation Testing Form
     And I enter the single line text
     And I select two from Multi Select

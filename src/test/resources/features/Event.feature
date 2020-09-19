@@ -1,6 +1,7 @@
 Feature: BlueSky Events
   Scenario: Event
     Given I navigate to blueskycitadelform site
+    #And I close pop up
     When  I click on events
     And I enter a date in Events In
     And I enter a word in the search bar

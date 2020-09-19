@@ -8,8 +8,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MyStepdefs1 {
     WebDriver driver;
@@ -34,7 +35,10 @@ public class MyStepdefs1 {
 
     @When("^I click on Automation Testing Form$")
     public void iClickOnAutomationTestingForm() {
+        WebDriverWait wait = new WebDriverWait(driver,30);
+        wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Automation Testing Form")));
         driver.findElement(By.linkText("Automation Testing Form")).click();
+        //The above code will close the pop up and then click on the Automation Testing Form
     }
 
     @And("^I enter the single line text$")
@@ -105,6 +109,7 @@ public class MyStepdefs1 {
        driver.findElement(By.cssSelector("#nf-field-133")) .click();
     }
 
+
     @Then("^My form should be submitted$")
     public void myFormShouldBeSubmitted() {
     }
@@ -113,5 +118,12 @@ public class MyStepdefs1 {
     @Then("^I close my window$")
     public void iCloseMyWindow() {
         driver.close();
+    }
+
+
+    @And("^I close the pop up$")
+    public void iCloseThePopUp() {
+        WebDriverWait wait = new WebDriverWait(driver,30);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"popmake-1342\"]/button"))).click();
     }
 }

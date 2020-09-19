@@ -5,13 +5,18 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class EventStep {
     WebDriver driver;
 
 
     @When("^I click on events$")
-    public void i_click_on_events() {
+    public void i_click_on_events() throws InterruptedException {
+
+        WebDriverWait wait = new WebDriverWait(driver,30);
+        wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Events")));
         driver.findElement(By.linkText("Events")).click();
     }
 
@@ -33,5 +38,11 @@ public class EventStep {
 
     @Then("^I should see the events for the selected month$")
     public void iShouldSeeTheEventsForTheSelectedMonth() {
+    }
+
+    @And("^I close pop up$")
+    public void iClosePopUp() throws InterruptedException {
+        driver.findElement(By.cssSelector("#popmake-1342>button")).click();
+        driver.wait(5000);
     }
 }
