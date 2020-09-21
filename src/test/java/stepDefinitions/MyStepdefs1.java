@@ -110,7 +110,8 @@ public class MyStepdefs1 {
 
 
     @Then("^My form should be submitted$")
-    public void myFormShouldBeSubmitted() {
+    public void myFormShouldBeSubmitted() throws InterruptedException {
+        Thread.sleep(3000);
         Assert.assertEquals(driver.findElement(By.cssSelector("#nf-form-9-cont > div > div.nf-response-msg > p:nth-child(1)")).getText(), "Your form has been successfully submitted.");
     }
 
