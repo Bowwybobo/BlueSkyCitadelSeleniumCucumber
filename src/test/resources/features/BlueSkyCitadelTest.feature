@@ -14,5 +14,5 @@ Feature: BlueSky Form Test
     And I enter a date
     #And I enter text into paragraph text
     And I click on submit
-    #Then My form should be submitted
+    Then My form should be submitted
 
